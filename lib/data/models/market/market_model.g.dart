@@ -1,44 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_model.dart';
+part of 'market_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserModelAdapter extends TypeAdapter<UserModel> {
+class MarketModelAdapter extends TypeAdapter<MarketModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 4;
 
   @override
-  UserModel read(BinaryReader reader) {
+  MarketModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return UserModel(
+    return MarketModel(
       id: fields[0] as int,
-      categories: (fields[1] as List).cast<CategoryModel>(),
-      products: (fields[2] as List).cast<ProductModel>(),
-      purchases: (fields[3] as List).cast<PurchaseModel>(),
-      markets: (fields[4] as List).cast<MarketModel>(),
+      name: fields[1] as String,
+      icon: fields[2] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, UserModel obj) {
+  void write(BinaryWriter writer, MarketModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.categories)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.products)
-      ..writeByte(3)
-      ..write(obj.purchases)
-      ..writeByte(4)
-      ..write(obj.markets);
+      ..write(obj.icon);
   }
 
   @override
@@ -47,7 +41,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserModelAdapter &&
+      other is MarketModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

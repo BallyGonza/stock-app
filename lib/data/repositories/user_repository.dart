@@ -24,4 +24,8 @@ class UserRepository {
 
 UserModel defaultUser = UserModel(
   id: 0,
+  categories: [],
+  products: [],
+  purchases: [],
+  markets: [],
 );
