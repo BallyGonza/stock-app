@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:stock_app/data/data.dart';
 
 part 'category_model.g.dart';
 
@@ -8,6 +9,7 @@ class CategoryModel extends HiveObject {
     required this.id,
     required this.name,
     required this.icon,
+    required this.products,
   });
 
   @HiveField(0)
@@ -16,4 +18,6 @@ class CategoryModel extends HiveObject {
   String name;
   @HiveField(2)
   String icon;
+  @HiveField(3)
+  List<ProductModel> products;
 }

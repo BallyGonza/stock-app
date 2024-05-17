@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:template_app/data/data.dart';
+import 'package:stock_app/data/data.dart';
 
 class UserRepository {
   UserRepository();
@@ -24,7 +24,7 @@ class UserRepository {
 
 UserModel defaultUser = UserModel(
   id: 0,
-  categories: [],
+  categories: [meat],
   products: [],
   purchases: [],
   markets: [],

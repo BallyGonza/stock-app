@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:template_app/data/data.dart';
+import 'package:stock_app/data/data.dart';
 
 part 'user_model.g.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template_app/data/constants/colors.dart';
+import 'package:stock_app/data/constants/colors.dart';
 
 ThemeData theme = ThemeData(
   colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),

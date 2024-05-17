@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template_app/theme.dart';
+import 'package:stock_app/theme.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:stock_app/views/views.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,9 +23,10 @@ class HomeScreen extends StatelessWidget {
             height: 60,
             child: SearchBar(
               hintText: 'Buscar...',
-              onChanged: (_){},
+              onChanged: (_) {},
             ),
           ),
+          const CategoryList(),
         ],
       ),
       bottomNavigationBar: NavigationBar(

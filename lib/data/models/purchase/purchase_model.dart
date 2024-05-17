@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:template_app/data/data.dart';
+import 'package:stock_app/data/data.dart';
 
 part 'purchase_model.g.dart';
 
@@ -8,9 +8,9 @@ class PurchaseModel extends HiveObject {
   PurchaseModel({
     required this.id,
     required this.products,
-   required this.total,
-   this.date,
-   this.market,
+    required this.total,
+    this.date,
+    this.market,
   });
 
   @HiveField(0)
