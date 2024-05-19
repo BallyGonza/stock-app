@@ -7,7 +7,7 @@ part 'product_state.freezed.dart';
 class ProductState with _$ProductState {
   const factory ProductState.initial() = ProductInitialState;
   const factory ProductState.loading() = ProductLoadingState;
-  const factory ProductState.loaded(List<ProductModel> categories) =
+  const factory ProductState.loaded(List<Product> categories) =
       ProductLoadedState;
   const factory ProductState.error(String message) = ProductErrorState;
 }

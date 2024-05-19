@@ -6,8 +6,8 @@ part 'category_event.freezed.dart';
 @freezed
 class CategoryEvent with _$CategoryEvent {
   const factory CategoryEvent.init() = CategoryInitialEvent;
-  const factory CategoryEvent.save({required CategoryModel category}) =
+  const factory CategoryEvent.save({required Category category}) =
       CategorySaveEvent;
-  const factory CategoryEvent.delete({required CategoryModel category}) =
+  const factory CategoryEvent.delete({required Category category}) =
       CategoryDeleteEvent;
 }

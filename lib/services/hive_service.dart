@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:stock_app/data/data.dart';
@@ -7,17 +8,16 @@ class HiveService {
   static Future<void> initializeHive() async {
     try {
       Hive
-        ..registerAdapter(CategoryModelAdapter())
-        ..registerAdapter(ProductModelAdapter())
-        ..registerAdapter(PurchaseModelAdapter());
+        ..registerAdapter(CategoryAdapter())
+        ..registerAdapter(ProductAdapter())
+        ..registerAdapter(PurchaseAdapter());
       WidgetsFlutterBinding.ensureInitialized();
       await Hive.initFlutter();
-      await Hive.openBox<CategoryModel>('categories_box');
-      await Hive.openBox<ProductModel>('products_box');
+      await Hive.openBox<Category>('categories_box');
+      await Hive.openBox<Product>('products_box');
+      await Hive.openBox<Purchase>('purchases_box');
     } catch (e) {
-      if (kDebugMode) {
-        print('Failed to initialize Hive: $e');
-      }
+      log('Error initializing Hive: $e');
     }
   }
 }

@@ -4,11 +4,11 @@ import 'package:stock_app/data/data.dart';
 class CategoryRepository {
   CategoryRepository({required this.categoryBox});
 
-  final Box<CategoryModel> categoryBox;
+  final Box<Category> categoryBox;
 
-  Future<List<CategoryModel>> getCategories() async {
+  Future<List<Category>> getAll() async {
     if (categoryBox.isEmpty) {
-      final defaultCategories = _getDefaultCategories();
+      final defaultCategories = _getDefault();
       if (defaultCategories.isNotEmpty) {
         await categoryBox.putAll({
           for (final category in defaultCategories) category.id: category,
@@ -20,83 +20,83 @@ class CategoryRepository {
     return categoryBox.values.toList();
   }
 
-  Future<void> saveCategory(CategoryModel category) async {
+  Future<void> save({required Category category}) async {
     await categoryBox.put(category.id, category);
   }
 
-  Future<void> deleteCategory(CategoryModel category) async {
+  Future<void> delete({required Category category}) async {
     await categoryBox.delete(category.id);
   }
 
-  List<CategoryModel> _getDefaultCategories() {
+  List<Category> _getDefault() {
     return [
-      CategoryModel(
+      Category(
         id: 1,
         name: 'Lacteos',
         icon: AppImages.dairyCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 2,
         name: 'Carnes',
         icon: AppImages.meatCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 3,
         name: 'Baño',
         icon: AppImages.bathCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 4,
         name: 'Frutas y Verduras',
         icon: AppImages.fruitCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 5,
         name: 'Lavadero',
         icon: AppImages.laundryCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 6,
         name: 'Harinas',
         icon: AppImages.flourCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 7,
         name: 'Bebidas',
         icon: AppImages.drinkCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 8,
         name: 'Limpieza',
         icon: AppImages.cleaningCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 9,
         name: 'Desayuno y Merienda',
         icon: AppImages.cookieCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 10,
         name: 'Pastas',
         icon: AppImages.pastaCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 11,
         name: 'Snacks y Golosinas',
         icon: AppImages.sweetCategory,
         products: [],
       ),
-      CategoryModel(
+      Category(
         id: 12,
         name: 'Cocina',
         icon: AppImages.kitchenCategory,

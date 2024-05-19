@@ -20,7 +20,7 @@ mixin _$CategoryState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryModel> categories) loaded,
+    required TResult Function(List<Category> categories) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$CategoryState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryModel> categories)? loaded,
+    TResult? Function(List<Category> categories)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$CategoryState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryModel> categories)? loaded,
+    TResult Function(List<Category> categories)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -127,7 +127,7 @@ class _$CategoryInitialStateImpl implements CategoryInitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryModel> categories) loaded,
+    required TResult Function(List<Category> categories) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -138,7 +138,7 @@ class _$CategoryInitialStateImpl implements CategoryInitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryModel> categories)? loaded,
+    TResult? Function(List<Category> categories)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -149,7 +149,7 @@ class _$CategoryInitialStateImpl implements CategoryInitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryModel> categories)? loaded,
+    TResult Function(List<Category> categories)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -242,7 +242,7 @@ class _$CategoryLoadingStateImpl implements CategoryLoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryModel> categories) loaded,
+    required TResult Function(List<Category> categories) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -253,7 +253,7 @@ class _$CategoryLoadingStateImpl implements CategoryLoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryModel> categories)? loaded,
+    TResult? Function(List<Category> categories)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -264,7 +264,7 @@ class _$CategoryLoadingStateImpl implements CategoryLoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryModel> categories)? loaded,
+    TResult Function(List<Category> categories)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -322,7 +322,7 @@ abstract class _$$CategoryLoadedStateImplCopyWith<$Res> {
           $Res Function(_$CategoryLoadedStateImpl) then) =
       __$$CategoryLoadedStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CategoryModel> categories});
+  $Res call({List<Category> categories});
 }
 
 /// @nodoc
@@ -342,7 +342,7 @@ class __$$CategoryLoadedStateImplCopyWithImpl<$Res>
       null == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
-              as List<CategoryModel>,
+              as List<Category>,
     ));
   }
 }
@@ -350,12 +350,12 @@ class __$$CategoryLoadedStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CategoryLoadedStateImpl implements CategoryLoadedState {
-  const _$CategoryLoadedStateImpl(final List<CategoryModel> categories)
+  const _$CategoryLoadedStateImpl(final List<Category> categories)
       : _categories = categories;
 
-  final List<CategoryModel> _categories;
+  final List<Category> _categories;
   @override
-  List<CategoryModel> get categories {
+  List<Category> get categories {
     if (_categories is EqualUnmodifiableListView) return _categories;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_categories);
@@ -391,7 +391,7 @@ class _$CategoryLoadedStateImpl implements CategoryLoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryModel> categories) loaded,
+    required TResult Function(List<Category> categories) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(categories);
@@ -402,7 +402,7 @@ class _$CategoryLoadedStateImpl implements CategoryLoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryModel> categories)? loaded,
+    TResult? Function(List<Category> categories)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(categories);
@@ -413,7 +413,7 @@ class _$CategoryLoadedStateImpl implements CategoryLoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryModel> categories)? loaded,
+    TResult Function(List<Category> categories)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -462,10 +462,10 @@ class _$CategoryLoadedStateImpl implements CategoryLoadedState {
 }
 
 abstract class CategoryLoadedState implements CategoryState {
-  const factory CategoryLoadedState(final List<CategoryModel> categories) =
+  const factory CategoryLoadedState(final List<Category> categories) =
       _$CategoryLoadedStateImpl;
 
-  List<CategoryModel> get categories;
+  List<Category> get categories;
   @JsonKey(ignore: true)
   _$$CategoryLoadedStateImplCopyWith<_$CategoryLoadedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -538,7 +538,7 @@ class _$CategoryErrorStateImpl implements CategoryErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CategoryModel> categories) loaded,
+    required TResult Function(List<Category> categories) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -549,7 +549,7 @@ class _$CategoryErrorStateImpl implements CategoryErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CategoryModel> categories)? loaded,
+    TResult? Function(List<Category> categories)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -560,7 +560,7 @@ class _$CategoryErrorStateImpl implements CategoryErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CategoryModel> categories)? loaded,
+    TResult Function(List<Category> categories)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

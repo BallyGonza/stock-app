@@ -8,7 +8,7 @@ class CategoryCard extends StatelessWidget {
     super.key,
   });
 
-  final CategoryModel category;
+  final Category category;
 
   @override
   Widget build(BuildContext context) {
