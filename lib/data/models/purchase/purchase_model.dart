@@ -9,7 +9,7 @@ class PurchaseModel extends HiveObject {
     required this.id,
     required this.products,
     required this.total,
-    this.date,
+    required this.date,
     this.market,
   });
 
@@ -18,18 +18,18 @@ class PurchaseModel extends HiveObject {
   @HiveField(1)
   List<ProductModel> products;
   @HiveField(2)
-  DateTime? date;
+  DateTime date;
   @HiveField(3)
   double total;
   @HiveField(4)
-  MarketModel? market;
+  String? market;
 
   PurchaseModel copyWith({
     int? id,
     List<ProductModel>? products,
     DateTime? date,
     double? total,
-    MarketModel? market,
+    String? market,
   }) {
     return PurchaseModel(
       id: id ?? this.id,

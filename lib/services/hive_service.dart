@@ -9,12 +9,11 @@ class HiveService {
       Hive
         ..registerAdapter(CategoryModelAdapter())
         ..registerAdapter(ProductModelAdapter())
-        ..registerAdapter(MarketModelAdapter())
         ..registerAdapter(PurchaseModelAdapter());
       WidgetsFlutterBinding.ensureInitialized();
       await Hive.initFlutter();
-      // Opening boxes.
       await Hive.openBox<CategoryModel>('categories_box');
+      await Hive.openBox<ProductModel>('products_box');
     } catch (e) {
       if (kDebugMode) {
         print('Failed to initialize Hive: $e');

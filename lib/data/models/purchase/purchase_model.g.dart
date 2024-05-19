@@ -20,8 +20,8 @@ class PurchaseModelAdapter extends TypeAdapter<PurchaseModel> {
       id: fields[0] as int,
       products: (fields[1] as List).cast<ProductModel>(),
       total: fields[3] as double,
-      date: fields[2] as DateTime?,
-      market: fields[4] as MarketModel?,
+      date: fields[2] as DateTime,
+      market: fields[4] as String?,
     );
   }
 
