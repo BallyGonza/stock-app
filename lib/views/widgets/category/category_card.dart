@@ -3,15 +3,22 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stock_app/data/data.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key});
+  const CategoryCard({
+    required this.category,
+    super.key,
+  });
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: CircleAvatar(child: SvgPicture.asset(AppImages.dairyProducts)),
-        title: const Text('Meat'),
-        subtitle: const Text('0 products'),
+        leading: CircleAvatar(
+          child: SvgPicture.asset(category.icon),
+        ),
+        title: Text(category.name),
+        subtitle: Text(category.products.length.toString()),
         trailing: const Icon(Icons.chevron_right),
       ),
     );

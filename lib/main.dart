@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:stock_app/blocs/blocs.dart';
 import 'package:stock_app/data/data.dart';
 import 'package:stock_app/services/services.dart';
@@ -18,15 +19,34 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiRepositoryProvider(
       providers: [
-        BlocProvider(
-          create: (context) => UserBloc(
-            userRepository: UserRepository(),
+        RepositoryProvider(
+          create: (context) => CategoryRepository(
+            categoryBox: Hive.box<CategoryModel>('categories_box'),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => ProductRepository(
+            productBox: Hive.box<ProductModel>('products_box'),
           ),
         ),
       ],
-      child: const App(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => CategoryBloc(
+              categoryRepository: context.read<CategoryRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => ProductBloc(
+              productRepository: context.read<ProductRepository>(),
+            ),
+          ),
+        ],
+        child: const App(),
+      ),
     );
   }
 }

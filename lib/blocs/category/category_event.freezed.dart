@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_event.dart';
+part of 'category_event.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$UserEvent {
+mixin _$CategoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
@@ -34,32 +34,33 @@ mixin _$UserEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UserInitialEvent value) init,
+    required TResult Function(CategoryInitialEvent value) init,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UserInitialEvent value)? init,
+    TResult? Function(CategoryInitialEvent value)? init,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UserInitialEvent value)? init,
+    TResult Function(CategoryInitialEvent value)? init,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserEventCopyWith<$Res> {
-  factory $UserEventCopyWith(UserEvent value, $Res Function(UserEvent) then) =
-      _$UserEventCopyWithImpl<$Res, UserEvent>;
+abstract class $CategoryEventCopyWith<$Res> {
+  factory $CategoryEventCopyWith(
+          CategoryEvent value, $Res Function(CategoryEvent) then) =
+      _$CategoryEventCopyWithImpl<$Res, CategoryEvent>;
 }
 
 /// @nodoc
-class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent>
-    implements $UserEventCopyWith<$Res> {
-  _$UserEventCopyWithImpl(this._value, this._then);
+class _$CategoryEventCopyWithImpl<$Res, $Val extends CategoryEvent>
+    implements $CategoryEventCopyWith<$Res> {
+  _$CategoryEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,35 +69,36 @@ class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent>
 }
 
 /// @nodoc
-abstract class _$$UserInitialEventImplCopyWith<$Res> {
-  factory _$$UserInitialEventImplCopyWith(_$UserInitialEventImpl value,
-          $Res Function(_$UserInitialEventImpl) then) =
-      __$$UserInitialEventImplCopyWithImpl<$Res>;
+abstract class _$$CategoryInitialEventImplCopyWith<$Res> {
+  factory _$$CategoryInitialEventImplCopyWith(_$CategoryInitialEventImpl value,
+          $Res Function(_$CategoryInitialEventImpl) then) =
+      __$$CategoryInitialEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserInitialEventImplCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$UserInitialEventImpl>
-    implements _$$UserInitialEventImplCopyWith<$Res> {
-  __$$UserInitialEventImplCopyWithImpl(_$UserInitialEventImpl _value,
-      $Res Function(_$UserInitialEventImpl) _then)
+class __$$CategoryInitialEventImplCopyWithImpl<$Res>
+    extends _$CategoryEventCopyWithImpl<$Res, _$CategoryInitialEventImpl>
+    implements _$$CategoryInitialEventImplCopyWith<$Res> {
+  __$$CategoryInitialEventImplCopyWithImpl(_$CategoryInitialEventImpl _value,
+      $Res Function(_$CategoryInitialEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$UserInitialEventImpl implements UserInitialEvent {
-  const _$UserInitialEventImpl();
+class _$CategoryInitialEventImpl implements CategoryInitialEvent {
+  const _$CategoryInitialEventImpl();
 
   @override
   String toString() {
-    return 'UserEvent.init()';
+    return 'CategoryEvent.init()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserInitialEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CategoryInitialEventImpl);
   }
 
   @override
@@ -133,7 +135,7 @@ class _$UserInitialEventImpl implements UserInitialEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UserInitialEvent value) init,
+    required TResult Function(CategoryInitialEvent value) init,
   }) {
     return init(this);
   }
@@ -141,7 +143,7 @@ class _$UserInitialEventImpl implements UserInitialEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UserInitialEvent value)? init,
+    TResult? Function(CategoryInitialEvent value)? init,
   }) {
     return init?.call(this);
   }
@@ -149,7 +151,7 @@ class _$UserInitialEventImpl implements UserInitialEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UserInitialEvent value)? init,
+    TResult Function(CategoryInitialEvent value)? init,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -159,6 +161,6 @@ class _$UserInitialEventImpl implements UserInitialEvent {
   }
 }
 
-abstract class UserInitialEvent implements UserEvent {
-  const factory UserInitialEvent() = _$UserInitialEventImpl;
+abstract class CategoryInitialEvent implements CategoryEvent {
+  const factory CategoryInitialEvent() = _$CategoryInitialEventImpl;
 }
