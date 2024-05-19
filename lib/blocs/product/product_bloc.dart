@@ -8,6 +8,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   })  : _productRepository = productRepository,
         super(const ProductState.initial()) {
     on<ProductInitialEvent>(_onInit);
+    on<ProductSaveEvent>(_onSave);
+    on<ProductDeleteEvent>(_onDelete);
     add(const ProductEvent.init());
   }
 
@@ -23,7 +25,35 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       _products = await _productRepository.getProducts();
       emit(ProductState.loaded(_products));
     } catch (e) {
-      emit(ProductState.error(e.toString()));
+      emit(ProductState.error('Failed to load products: $e'));
+    }
+  }
+
+  Future<void> _onSave(
+    ProductSaveEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    emit(const ProductState.loading());
+    try {
+      await _productRepository.saveProduct(event.product);
+      _products = await _productRepository.getProducts();
+      emit(ProductState.loaded(_products));
+    } catch (e) {
+      emit(ProductState.error('Failed to save product: $e'));
+    }
+  }
+
+  Future<void> _onDelete(
+    ProductDeleteEvent event,
+    Emitter<ProductState> emit,
+  ) async {
+    emit(const ProductState.loading());
+    try {
+      await _productRepository.deleteProduct(event.product);
+      _products = await _productRepository.getProducts();
+      emit(ProductState.loaded(_products));
+    } catch (e) {
+      emit(ProductState.error('Failed to delete product: $e'));
     }
   }
 }

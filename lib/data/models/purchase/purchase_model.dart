@@ -23,4 +23,20 @@ class PurchaseModel extends HiveObject {
   double total;
   @HiveField(4)
   MarketModel? market;
+
+  PurchaseModel copyWith({
+    int? id,
+    List<ProductModel>? products,
+    DateTime? date,
+    double? total,
+    MarketModel? market,
+  }) {
+    return PurchaseModel(
+      id: id ?? this.id,
+      products: products ?? this.products,
+      date: date ?? this.date,
+      total: total ?? this.total,
+      market: market ?? this.market,
+    );
+  }
 }

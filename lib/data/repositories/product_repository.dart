@@ -16,10 +16,6 @@ class ProductRepository {
     await productBox.put(product.id, product);
   }
 
-  Future<void> updateProduct(ProductModel product) async {
-    await productBox.put(product.id, product);
-  }
-
   Future<void> deleteProduct(ProductModel product) async {
     await productBox.delete(product.id);
   }

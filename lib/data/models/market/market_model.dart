@@ -16,4 +16,16 @@ class MarketModel extends HiveObject {
   String name;
   @HiveField(2)
   String icon;
+
+  MarketModel copyWith({
+    int? id,
+    String? name,
+    String? icon,
+  }) {
+    return MarketModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      icon: icon ?? this.icon,
+    );
+  }
 }

@@ -19,32 +19,44 @@ mixin _$CategoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(CategoryModel category) save,
+    required TResult Function(CategoryModel category) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(CategoryModel category)? save,
+    TResult? Function(CategoryModel category)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(CategoryModel category)? save,
+    TResult Function(CategoryModel category)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CategoryInitialEvent value) init,
+    required TResult Function(CategorySaveEvent value) save,
+    required TResult Function(CategoryDeleteEvent value) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CategoryInitialEvent value)? init,
+    TResult? Function(CategorySaveEvent value)? save,
+    TResult? Function(CategoryDeleteEvent value)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CategoryInitialEvent value)? init,
+    TResult Function(CategorySaveEvent value)? save,
+    TResult Function(CategoryDeleteEvent value)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +120,8 @@ class _$CategoryInitialEventImpl implements CategoryInitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(CategoryModel category) save,
+    required TResult Function(CategoryModel category) delete,
   }) {
     return init();
   }
@@ -116,6 +130,8 @@ class _$CategoryInitialEventImpl implements CategoryInitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(CategoryModel category)? save,
+    TResult? Function(CategoryModel category)? delete,
   }) {
     return init?.call();
   }
@@ -124,6 +140,8 @@ class _$CategoryInitialEventImpl implements CategoryInitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(CategoryModel category)? save,
+    TResult Function(CategoryModel category)? delete,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -136,6 +154,8 @@ class _$CategoryInitialEventImpl implements CategoryInitialEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CategoryInitialEvent value) init,
+    required TResult Function(CategorySaveEvent value) save,
+    required TResult Function(CategoryDeleteEvent value) delete,
   }) {
     return init(this);
   }
@@ -144,6 +164,8 @@ class _$CategoryInitialEventImpl implements CategoryInitialEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CategoryInitialEvent value)? init,
+    TResult? Function(CategorySaveEvent value)? save,
+    TResult? Function(CategoryDeleteEvent value)? delete,
   }) {
     return init?.call(this);
   }
@@ -152,6 +174,8 @@ class _$CategoryInitialEventImpl implements CategoryInitialEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CategoryInitialEvent value)? init,
+    TResult Function(CategorySaveEvent value)? save,
+    TResult Function(CategoryDeleteEvent value)? delete,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -163,4 +187,288 @@ class _$CategoryInitialEventImpl implements CategoryInitialEvent {
 
 abstract class CategoryInitialEvent implements CategoryEvent {
   const factory CategoryInitialEvent() = _$CategoryInitialEventImpl;
+}
+
+/// @nodoc
+abstract class _$$CategorySaveEventImplCopyWith<$Res> {
+  factory _$$CategorySaveEventImplCopyWith(_$CategorySaveEventImpl value,
+          $Res Function(_$CategorySaveEventImpl) then) =
+      __$$CategorySaveEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CategoryModel category});
+}
+
+/// @nodoc
+class __$$CategorySaveEventImplCopyWithImpl<$Res>
+    extends _$CategoryEventCopyWithImpl<$Res, _$CategorySaveEventImpl>
+    implements _$$CategorySaveEventImplCopyWith<$Res> {
+  __$$CategorySaveEventImplCopyWithImpl(_$CategorySaveEventImpl _value,
+      $Res Function(_$CategorySaveEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+  }) {
+    return _then(_$CategorySaveEventImpl(
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as CategoryModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CategorySaveEventImpl implements CategorySaveEvent {
+  const _$CategorySaveEventImpl({required this.category});
+
+  @override
+  final CategoryModel category;
+
+  @override
+  String toString() {
+    return 'CategoryEvent.save(category: $category)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CategorySaveEventImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CategorySaveEventImplCopyWith<_$CategorySaveEventImpl> get copyWith =>
+      __$$CategorySaveEventImplCopyWithImpl<_$CategorySaveEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(CategoryModel category) save,
+    required TResult Function(CategoryModel category) delete,
+  }) {
+    return save(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(CategoryModel category)? save,
+    TResult? Function(CategoryModel category)? delete,
+  }) {
+    return save?.call(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(CategoryModel category)? save,
+    TResult Function(CategoryModel category)? delete,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CategoryInitialEvent value) init,
+    required TResult Function(CategorySaveEvent value) save,
+    required TResult Function(CategoryDeleteEvent value) delete,
+  }) {
+    return save(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CategoryInitialEvent value)? init,
+    TResult? Function(CategorySaveEvent value)? save,
+    TResult? Function(CategoryDeleteEvent value)? delete,
+  }) {
+    return save?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CategoryInitialEvent value)? init,
+    TResult Function(CategorySaveEvent value)? save,
+    TResult Function(CategoryDeleteEvent value)? delete,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CategorySaveEvent implements CategoryEvent {
+  const factory CategorySaveEvent({required final CategoryModel category}) =
+      _$CategorySaveEventImpl;
+
+  CategoryModel get category;
+  @JsonKey(ignore: true)
+  _$$CategorySaveEventImplCopyWith<_$CategorySaveEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CategoryDeleteEventImplCopyWith<$Res> {
+  factory _$$CategoryDeleteEventImplCopyWith(_$CategoryDeleteEventImpl value,
+          $Res Function(_$CategoryDeleteEventImpl) then) =
+      __$$CategoryDeleteEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CategoryModel category});
+}
+
+/// @nodoc
+class __$$CategoryDeleteEventImplCopyWithImpl<$Res>
+    extends _$CategoryEventCopyWithImpl<$Res, _$CategoryDeleteEventImpl>
+    implements _$$CategoryDeleteEventImplCopyWith<$Res> {
+  __$$CategoryDeleteEventImplCopyWithImpl(_$CategoryDeleteEventImpl _value,
+      $Res Function(_$CategoryDeleteEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+  }) {
+    return _then(_$CategoryDeleteEventImpl(
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as CategoryModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CategoryDeleteEventImpl implements CategoryDeleteEvent {
+  const _$CategoryDeleteEventImpl({required this.category});
+
+  @override
+  final CategoryModel category;
+
+  @override
+  String toString() {
+    return 'CategoryEvent.delete(category: $category)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CategoryDeleteEventImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CategoryDeleteEventImplCopyWith<_$CategoryDeleteEventImpl> get copyWith =>
+      __$$CategoryDeleteEventImplCopyWithImpl<_$CategoryDeleteEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(CategoryModel category) save,
+    required TResult Function(CategoryModel category) delete,
+  }) {
+    return delete(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(CategoryModel category)? save,
+    TResult? Function(CategoryModel category)? delete,
+  }) {
+    return delete?.call(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(CategoryModel category)? save,
+    TResult Function(CategoryModel category)? delete,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CategoryInitialEvent value) init,
+    required TResult Function(CategorySaveEvent value) save,
+    required TResult Function(CategoryDeleteEvent value) delete,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CategoryInitialEvent value)? init,
+    TResult? Function(CategorySaveEvent value)? save,
+    TResult? Function(CategoryDeleteEvent value)? delete,
+  }) {
+    return delete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CategoryInitialEvent value)? init,
+    TResult Function(CategorySaveEvent value)? save,
+    TResult Function(CategoryDeleteEvent value)? delete,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CategoryDeleteEvent implements CategoryEvent {
+  const factory CategoryDeleteEvent({required final CategoryModel category}) =
+      _$CategoryDeleteEventImpl;
+
+  CategoryModel get category;
+  @JsonKey(ignore: true)
+  _$$CategoryDeleteEventImplCopyWith<_$CategoryDeleteEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

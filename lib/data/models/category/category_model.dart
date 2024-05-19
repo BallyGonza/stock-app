@@ -20,4 +20,18 @@ class CategoryModel extends HiveObject {
   String icon;
   @HiveField(3)
   List<ProductModel> products;
+
+  CategoryModel copyWith({
+    int? id,
+    String? name,
+    String? icon,
+    List<ProductModel>? products,
+  }) {
+    return CategoryModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      icon: icon ?? this.icon,
+      products: products ?? this.products,
+    );
+  }
 }

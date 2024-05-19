@@ -25,4 +25,22 @@ class ProductModel extends HiveObject {
   DateTime? expiryDate;
   @HiveField(5)
   int quantity;
+
+  ProductModel copyWith({
+    int? id,
+    String? name,
+    String? category,
+    double? price,
+    DateTime? expiryDate,
+    int? quantity,
+  }) {
+    return ProductModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      category: category ?? this.category,
+      price: price ?? this.price,
+      expiryDate: expiryDate ?? this.expiryDate,
+      quantity: quantity ?? this.quantity,
+    );
+  }
 }
