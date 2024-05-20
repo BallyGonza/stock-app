@@ -15,12 +15,14 @@ class _NewProductScreenState extends State<NewProductScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _priceController = TextEditingController();
+  final _quantityController = TextEditingController();
   late Category _category;
 
   @override
   void dispose() {
     _nameController.dispose();
     _priceController.dispose();
+    _quantityController.dispose();
     super.dispose();
   }
 
@@ -30,7 +32,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
         id: const Uuid().v1(),
         name: _nameController.text,
         category: _category,
-        quantity: 1,
+        quantity: int.parse(_quantityController.text),
         price: double.parse(_priceController.text),
       );
       Navigator.pop(context, product);
@@ -66,6 +68,21 @@ class _NewProductScreenState extends State<NewProductScreen> {
                     return 'Please enter a product price';
                   }
                   if (double.tryParse(value) == null) {
+                    return 'Please enter a valid number';
+                  }
+                  return null;
+                },
+              ),
+              // textFormField for quantity
+              TextFormField(
+                controller: _quantityController,
+                decoration: InputDecoration(labelText: 'Product Quantity'),
+                keyboardType: TextInputType.number,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a product quantity';
+                  }
+                  if (int.tryParse(value) == null) {
                     return 'Please enter a valid number';
                   }
                   return null;

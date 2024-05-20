@@ -14,4 +14,6 @@ class AppImages {
   static const sweetCategory = 'assets/images/categories/sweet_category.svg';
   static const kitchenCategory =
       'assets/images/categories/kitchen_category.svg';
+
+  static const cartIcon = 'assets/images/cart_icon.svg';
 }

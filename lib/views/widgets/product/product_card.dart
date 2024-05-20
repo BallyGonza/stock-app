@@ -15,8 +15,14 @@ class ProductCard extends StatelessWidget {
           child: SvgPicture.asset(product.category.icon),
         ),
         title: Text(product.name),
-        subtitle: Text(arg.format(product.price)),
-        trailing: Text(product.quantity.toString()),
+        trailing: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Subtotal:'),
+            Text(arg.format(product.quantity * product.price)),
+          ],
+        ),
+        subtitle: Text('${product.quantity}x${arg.format(product.price)}'),
       ),
     );
   }
