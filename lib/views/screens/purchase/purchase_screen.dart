@@ -18,35 +18,45 @@ class PurchaseScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          // Custom SliverAppBar with title and delete button
           CustomSliverAppBar.text(
             title: purchase.market ?? 'Compra',
             actions: [
               IconButton(
                 icon: const FaIcon(FontAwesomeIcons.trashCan),
-                onPressed: () => context.read<PurchaseBloc>().add(
-                      PurchaseEvent.delete(purchase: purchase),
-                    ),
+                onPressed: () {
+                  context.read<PurchaseBloc>().add(
+                        PurchaseEvent.delete(purchase: purchase),
+                      );
+                  for (final product in purchase.products) {
+                    context.read<ProductBloc>().add(
+                          ProductEvent.delete(product: product),
+                        );
+                  }
+                  Navigator.pop(context);
+                },
               ),
             ],
             arrowBack: true,
           ),
           // List of product cards
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final product = purchase.products[index];
-                return ProductCard(
-                  product: product,
-                );
-              },
-              childCount: purchase.products.length,
+          SliverPadding(
+            padding: const EdgeInsets.all(16),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  final product = purchase.products[index];
+                  return ProductCard.purchase(
+                    product: product,
+                  );
+                },
+                childCount: purchase.products.length,
+              ),
             ),
           ),
           // Total price section
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+            sliver: SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

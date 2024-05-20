@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stock_app/blocs/blocs.dart';
 import 'package:stock_app/data/data.dart';
+import 'package:stock_app/views/views.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
@@ -16,6 +17,13 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<Category>(
+              builder: (context) => CategoryScreen(category: category),
+            ),
+          );
+        },
         leading: CircleAvatar(
           child: SvgPicture.asset(category.icon),
         ),

@@ -48,24 +48,51 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
             ],
             arrowBack: true,
           ),
-          SliverFillRemaining(
-            child: Padding(
+          if (products.isEmpty)
+            const SliverFillRemaining(
+              child: Center(
+                child: Text('No hay productos en la compra'),
+              ),
+            )
+          else
+            SliverPadding(
               padding: const EdgeInsets.all(16),
-              child: products.isEmpty
-                  ? const Center(
-                      child: Text('Agregar productos'),
-                    )
-                  : ListView.builder(
-                      itemCount: products.length,
-                      itemBuilder: (context, index) {
-                        final product = products[index];
-                        return ProductCard(
-                          product: product,
-                        );
-                      },
-                    ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final product = products[index];
+                    return ProductCard.purchase(
+                      product: product,
+                    );
+                  },
+                  childCount: products.length,
+                ),
+              ),
             ),
-          ),
+          if (products.isEmpty)
+            const SliverToBoxAdapter()
+          else
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+              sliver: SliverToBoxAdapter(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Total:'),
+                    Text(
+                      arg.format(
+                        products.fold<double>(
+                          0,
+                          (previousValue, element) =>
+                              previousValue +
+                              (element.price * element.quantity),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
         ],
       ),
     );
