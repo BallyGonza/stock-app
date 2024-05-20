@@ -16,6 +16,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
   final _nameController = TextEditingController();
   final _priceController = TextEditingController();
   final _quantityController = TextEditingController();
+  final _expirationDateController = TextEditingController();
   late Category _category;
 
   @override
@@ -32,6 +33,9 @@ class _NewProductScreenState extends State<NewProductScreen> {
         id: const Uuid().v1(),
         name: _nameController.text,
         category: _category,
+        expiryDate: _expirationDateController.text.isNotEmpty
+            ? dateFormat.parse(_expirationDateController.text)
+            : null,
         quantity: int.parse(_quantityController.text),
         price: double.parse(_priceController.text),
       );
@@ -42,16 +46,16 @@ class _NewProductScreenState extends State<NewProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('New Product')),
+      appBar: AppBar(title: const Text('New Product')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Product Name'),
+                decoration: const InputDecoration(labelText: 'Product Name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a product name';
@@ -61,7 +65,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
               ),
               TextFormField(
                 controller: _priceController,
-                decoration: InputDecoration(labelText: 'Product Price'),
+                decoration: const InputDecoration(labelText: 'Product Price'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -76,7 +80,8 @@ class _NewProductScreenState extends State<NewProductScreen> {
               // textFormField for quantity
               TextFormField(
                 controller: _quantityController,
-                decoration: InputDecoration(labelText: 'Product Quantity'),
+                decoration:
+                    const InputDecoration(labelText: 'Product Quantity'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -87,6 +92,26 @@ class _NewProductScreenState extends State<NewProductScreen> {
                   }
                   return null;
                 },
+              ),
+              // DateTimeField for expiration date
+              TextButton(
+                onPressed: () => showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime.now(),
+                  lastDate: DateTime.now().add(const Duration(days: 365 * 10)),
+                ).then((value) {
+                  if (value != null) {
+                    setState(() {
+                      _expirationDateController.text = dateFormat.format(value);
+                    });
+                  }
+                }),
+                child: Text(
+                  _expirationDateController.text.isEmpty
+                      ? 'Select Expiration Date'
+                      : _expirationDateController.text,
+                ),
               ),
               BlocBuilder<CategoryBloc, CategoryState>(
                 builder: (context, state) {
@@ -99,23 +124,28 @@ class _NewProductScreenState extends State<NewProductScreen> {
                           });
                         },
                         items: categories
-                            .map((category) => DropdownMenuItem(
-                                  value: category,
-                                  child: Text(category.name,
-                                      overflow: TextOverflow.ellipsis),
-                                ))
+                            .map(
+                              (category) => DropdownMenuItem(
+                                value: category,
+                                child: Text(
+                                  category.name,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            )
                             .toList(),
-                        decoration: InputDecoration(labelText: 'Category'),
+                        decoration:
+                            const InputDecoration(labelText: 'Category'),
                       );
                     },
                     orElse: () => const CircularProgressIndicator(),
                   );
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: Text('Add Product'),
+                child: const Text('Add Product'),
               ),
             ],
           ),
