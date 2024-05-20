@@ -17,20 +17,10 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          // Custom SliverAppBar with title and delete button
           CustomSliverAppBar.text(
             title: category.name,
-            // actions: [
-            //   IconButton(
-            //     icon: const FaIcon(FontAwesomeIcons.trashCan),
-            //     onPressed: () => context.read<CategoryBloc>().add(
-            //           CategoryEvent.delete(category: category),
-            //         ),
-            //   ),
-            // ],
             arrowBack: true,
           ),
-          // List of product cards
           SliverFillRemaining(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -38,24 +28,44 @@ class CategoryScreen extends StatelessWidget {
                 builder: (context, state) {
                   return state.maybeWhen(
                     loaded: (products) {
+                      // Filter products by category
                       final categoryProducts = products
                           .where(
                             (product) => product.category.name == category.name,
                           )
                           .toList();
-                      return categoryProducts.isEmpty
-                          ? const Center(
-                              child: Text('No hay productos en esta categoría'),
-                            )
-                          : ListView.builder(
-                              itemCount: categoryProducts.length,
-                              itemBuilder: (context, index) {
-                                final product = categoryProducts[index];
-                                return ProductCard.category(
-                                  product: product,
-                                );
-                              },
-                            );
+
+                      if (categoryProducts.isEmpty) {
+                        return const Center(
+                          child: Text('No hay productos en esta categoría'),
+                        );
+                      }
+
+                      // Group products by name and calculate total quantity
+                      final productGroups = <String, int>{};
+                      for (final product in categoryProducts) {
+                        if (productGroups.containsKey(product.name)) {
+                          productGroups[product.name] =
+                              productGroups[product.name]! + product.quantity;
+                        } else {
+                          productGroups[product.name] = product.quantity;
+                        }
+                      }
+
+                      final groupedProducts = productGroups.entries.toList();
+
+                      return ListView.builder(
+                        itemCount: groupedProducts.length,
+                        itemBuilder: (context, index) {
+                          final productName = groupedProducts[index].key;
+                          final productQuantity = groupedProducts[index].value;
+                          return ProductGroupCard(
+                            productName: productName,
+                            productQuantity: productQuantity,
+                            categoryProducts: categoryProducts,
+                          );
+                        },
+                      );
                     },
                     orElse: () => const Center(
                       child: CircularProgressIndicator(),

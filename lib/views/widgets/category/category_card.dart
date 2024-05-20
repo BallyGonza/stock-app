@@ -28,20 +28,19 @@ class CategoryCard extends StatelessWidget {
           child: SvgPicture.asset(category.icon),
         ),
         title: Text(category.name),
-        subtitle: BlocBuilder<ProductBloc, ProductState>(
+        trailing: BlocBuilder<ProductBloc, ProductState>(
           builder: (context, state) {
             return state.maybeWhen(
               orElse: () => const CircularProgressIndicator(),
               loaded: (products) {
-                final productsInCategory = products
+                final totalQuantity = products
                     .where((product) => product.category.name == category.name)
-                    .toList();
-                return Text('${productsInCategory.length}');
+                    .fold<int>(0, (sum, product) => sum + product.quantity);
+                return Text('$totalQuantity');
               },
             );
           },
         ),
-        trailing: const Icon(Icons.chevron_right),
       ),
     );
   }
