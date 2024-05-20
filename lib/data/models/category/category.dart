@@ -9,20 +9,17 @@ class Category extends HiveObject {
     required this.id,
     required this.name,
     required this.icon,
-    required this.products,
   });
 
   @HiveField(0)
-  int id;
+  String id;
   @HiveField(1)
   String name;
   @HiveField(2)
   String icon;
-  @HiveField(3)
-  List<Product> products;
 
   Category copyWith({
-    int? id,
+    String? id,
     String? name,
     String? icon,
     List<Product>? products,
@@ -31,7 +28,6 @@ class Category extends HiveObject {
       id: id ?? this.id,
       name: name ?? this.name,
       icon: icon ?? this.icon,
-      products: products ?? this.products,
     );
   }
 }

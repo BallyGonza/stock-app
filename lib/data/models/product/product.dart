@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:stock_app/data/data.dart';
 
 part 'product.g.dart';
 
@@ -14,11 +15,11 @@ class Product extends HiveObject {
   });
 
   @HiveField(0)
-  int id;
+  String id;
   @HiveField(1)
   String name;
   @HiveField(2)
-  String category;
+  Category category;
   @HiveField(3)
   double price;
   @HiveField(4)
@@ -27,9 +28,9 @@ class Product extends HiveObject {
   int quantity;
 
   Product copyWith({
-    int? id,
+    String? id,
     String? name,
-    String? category,
+    Category? category,
     double? price,
     DateTime? expiryDate,
     int? quantity,

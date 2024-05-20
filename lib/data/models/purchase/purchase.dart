@@ -14,7 +14,7 @@ class Purchase extends HiveObject {
   });
 
   @HiveField(0)
-  int id;
+  String id;
   @HiveField(1)
   List<Product> products;
   @HiveField(2)
@@ -25,7 +25,7 @@ class Purchase extends HiveObject {
   String? market;
 
   Purchase copyWith({
-    int? id,
+    String? id,
     List<Product>? products,
     DateTime? date,
     double? total,

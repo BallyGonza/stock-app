@@ -17,25 +17,22 @@ class CategoryAdapter extends TypeAdapter<Category> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Category(
-      id: fields[0] as int,
+      id: fields[0] as String,
       name: fields[1] as String,
       icon: fields[2] as String,
-      products: (fields[3] as List).cast<Product>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Category obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.icon)
-      ..writeByte(3)
-      ..write(obj.products);
+      ..write(obj.icon);
   }
 
   @override

@@ -17,7 +17,7 @@ class PurchaseAdapter extends TypeAdapter<Purchase> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Purchase(
-      id: fields[0] as int,
+      id: fields[0] as String,
       products: (fields[1] as List).cast<Product>(),
       total: fields[3] as double,
       date: fields[2] as DateTime,

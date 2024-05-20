@@ -9,6 +9,7 @@ import 'package:stock_app/views/views.dart';
 
 Future<void> main() async {
   await HiveService.initializeHive();
+  LocalizationService().setupLocalization();
   await SystemChromeService.setSystemChrome();
 
   runApp(const Main());
