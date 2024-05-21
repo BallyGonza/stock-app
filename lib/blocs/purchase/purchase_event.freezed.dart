@@ -19,22 +19,22 @@ mixin _$PurchaseEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Purchase purchase) save,
-    required TResult Function(Purchase purchase) delete,
+    required TResult Function(PurchaseModel purchase) save,
+    required TResult Function(PurchaseModel purchase) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Purchase purchase)? save,
-    TResult? Function(Purchase purchase)? delete,
+    TResult? Function(PurchaseModel purchase)? save,
+    TResult? Function(PurchaseModel purchase)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Purchase purchase)? save,
-    TResult Function(Purchase purchase)? delete,
+    TResult Function(PurchaseModel purchase)? save,
+    TResult Function(PurchaseModel purchase)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,8 +120,8 @@ class _$PurchaseInitialEventImpl implements PurchaseInitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Purchase purchase) save,
-    required TResult Function(Purchase purchase) delete,
+    required TResult Function(PurchaseModel purchase) save,
+    required TResult Function(PurchaseModel purchase) delete,
   }) {
     return init();
   }
@@ -130,8 +130,8 @@ class _$PurchaseInitialEventImpl implements PurchaseInitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Purchase purchase)? save,
-    TResult? Function(Purchase purchase)? delete,
+    TResult? Function(PurchaseModel purchase)? save,
+    TResult? Function(PurchaseModel purchase)? delete,
   }) {
     return init?.call();
   }
@@ -140,8 +140,8 @@ class _$PurchaseInitialEventImpl implements PurchaseInitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Purchase purchase)? save,
-    TResult Function(Purchase purchase)? delete,
+    TResult Function(PurchaseModel purchase)? save,
+    TResult Function(PurchaseModel purchase)? delete,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -195,7 +195,7 @@ abstract class _$$PurchaseSaveEventImplCopyWith<$Res> {
           $Res Function(_$PurchaseSaveEventImpl) then) =
       __$$PurchaseSaveEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Purchase purchase});
+  $Res call({PurchaseModel purchase});
 }
 
 /// @nodoc
@@ -215,7 +215,7 @@ class __$$PurchaseSaveEventImplCopyWithImpl<$Res>
       purchase: null == purchase
           ? _value.purchase
           : purchase // ignore: cast_nullable_to_non_nullable
-              as Purchase,
+              as PurchaseModel,
     ));
   }
 }
@@ -226,7 +226,7 @@ class _$PurchaseSaveEventImpl implements PurchaseSaveEvent {
   const _$PurchaseSaveEventImpl({required this.purchase});
 
   @override
-  final Purchase purchase;
+  final PurchaseModel purchase;
 
   @override
   String toString() {
@@ -256,8 +256,8 @@ class _$PurchaseSaveEventImpl implements PurchaseSaveEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Purchase purchase) save,
-    required TResult Function(Purchase purchase) delete,
+    required TResult Function(PurchaseModel purchase) save,
+    required TResult Function(PurchaseModel purchase) delete,
   }) {
     return save(purchase);
   }
@@ -266,8 +266,8 @@ class _$PurchaseSaveEventImpl implements PurchaseSaveEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Purchase purchase)? save,
-    TResult? Function(Purchase purchase)? delete,
+    TResult? Function(PurchaseModel purchase)? save,
+    TResult? Function(PurchaseModel purchase)? delete,
   }) {
     return save?.call(purchase);
   }
@@ -276,8 +276,8 @@ class _$PurchaseSaveEventImpl implements PurchaseSaveEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Purchase purchase)? save,
-    TResult Function(Purchase purchase)? delete,
+    TResult Function(PurchaseModel purchase)? save,
+    TResult Function(PurchaseModel purchase)? delete,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -322,10 +322,10 @@ class _$PurchaseSaveEventImpl implements PurchaseSaveEvent {
 }
 
 abstract class PurchaseSaveEvent implements PurchaseEvent {
-  const factory PurchaseSaveEvent({required final Purchase purchase}) =
+  const factory PurchaseSaveEvent({required final PurchaseModel purchase}) =
       _$PurchaseSaveEventImpl;
 
-  Purchase get purchase;
+  PurchaseModel get purchase;
   @JsonKey(ignore: true)
   _$$PurchaseSaveEventImplCopyWith<_$PurchaseSaveEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -337,7 +337,7 @@ abstract class _$$PurchaseDeleteEventImplCopyWith<$Res> {
           $Res Function(_$PurchaseDeleteEventImpl) then) =
       __$$PurchaseDeleteEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Purchase purchase});
+  $Res call({PurchaseModel purchase});
 }
 
 /// @nodoc
@@ -357,7 +357,7 @@ class __$$PurchaseDeleteEventImplCopyWithImpl<$Res>
       purchase: null == purchase
           ? _value.purchase
           : purchase // ignore: cast_nullable_to_non_nullable
-              as Purchase,
+              as PurchaseModel,
     ));
   }
 }
@@ -368,7 +368,7 @@ class _$PurchaseDeleteEventImpl implements PurchaseDeleteEvent {
   const _$PurchaseDeleteEventImpl({required this.purchase});
 
   @override
-  final Purchase purchase;
+  final PurchaseModel purchase;
 
   @override
   String toString() {
@@ -398,8 +398,8 @@ class _$PurchaseDeleteEventImpl implements PurchaseDeleteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Purchase purchase) save,
-    required TResult Function(Purchase purchase) delete,
+    required TResult Function(PurchaseModel purchase) save,
+    required TResult Function(PurchaseModel purchase) delete,
   }) {
     return delete(purchase);
   }
@@ -408,8 +408,8 @@ class _$PurchaseDeleteEventImpl implements PurchaseDeleteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Purchase purchase)? save,
-    TResult? Function(Purchase purchase)? delete,
+    TResult? Function(PurchaseModel purchase)? save,
+    TResult? Function(PurchaseModel purchase)? delete,
   }) {
     return delete?.call(purchase);
   }
@@ -418,8 +418,8 @@ class _$PurchaseDeleteEventImpl implements PurchaseDeleteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Purchase purchase)? save,
-    TResult Function(Purchase purchase)? delete,
+    TResult Function(PurchaseModel purchase)? save,
+    TResult Function(PurchaseModel purchase)? delete,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -464,10 +464,10 @@ class _$PurchaseDeleteEventImpl implements PurchaseDeleteEvent {
 }
 
 abstract class PurchaseDeleteEvent implements PurchaseEvent {
-  const factory PurchaseDeleteEvent({required final Purchase purchase}) =
+  const factory PurchaseDeleteEvent({required final PurchaseModel purchase}) =
       _$PurchaseDeleteEventImpl;
 
-  Purchase get purchase;
+  PurchaseModel get purchase;
   @JsonKey(ignore: true)
   _$$PurchaseDeleteEventImplCopyWith<_$PurchaseDeleteEventImpl> get copyWith =>
       throw _privateConstructorUsedError;

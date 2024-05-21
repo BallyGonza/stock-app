@@ -11,7 +11,7 @@ class CategoryCard extends StatelessWidget {
     super.key,
   });
 
-  final Category category;
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CategoryCard extends StatelessWidget {
       child: ListTile(
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute<Category>(
+            MaterialPageRoute<CategoryModel>(
               builder: (context) => CategoryScreen(category: category),
             ),
           );

@@ -6,8 +6,8 @@ part 'purchase_event.freezed.dart';
 @freezed
 class PurchaseEvent with _$PurchaseEvent {
   const factory PurchaseEvent.init() = PurchaseInitialEvent;
-  const factory PurchaseEvent.save({required Purchase purchase}) =
+  const factory PurchaseEvent.save({required PurchaseModel purchase}) =
       PurchaseSaveEvent;
-  const factory PurchaseEvent.delete({required Purchase purchase}) =
+  const factory PurchaseEvent.delete({required PurchaseModel purchase}) =
       PurchaseDeleteEvent;
 }

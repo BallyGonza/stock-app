@@ -12,7 +12,7 @@ class ProductGroupCard extends StatelessWidget {
 
   final String productName;
   final int productQuantity;
-  final List<Product> categoryProducts;
+  final List<ProductModel> categoryProducts;
 
   @override
   Widget build(BuildContext context) {

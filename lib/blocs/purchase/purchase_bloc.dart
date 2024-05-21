@@ -14,7 +14,7 @@ class PurchaseBloc extends Bloc<PurchaseEvent, PurchaseState> {
   }
 
   final PurchaseRepository _purchaseRepository;
-  List<Purchase> _purchases = [];
+  List<PurchaseModel> _purchases = [];
 
   Future<void> _onInit(
     PurchaseInitialEvent event,
@@ -22,7 +22,7 @@ class PurchaseBloc extends Bloc<PurchaseEvent, PurchaseState> {
   ) async {
     emit(const PurchaseState.loading());
     try {
-      _purchases = await _purchaseRepository.getAll();
+      _purchases = await _purchaseRepository.getPurchases();
       emit(PurchaseState.loaded(_purchases));
     } catch (e) {
       emit(PurchaseState.error('Failed to load purchasets: $e'));
@@ -35,8 +35,8 @@ class PurchaseBloc extends Bloc<PurchaseEvent, PurchaseState> {
   ) async {
     emit(const PurchaseState.loading());
     try {
-      await _purchaseRepository.save(purchase: event.purchase);
-      _purchases = await _purchaseRepository.getAll();
+      await _purchaseRepository.savePurchase(event.purchase);
+      _purchases = await _purchaseRepository.getPurchases();
       emit(PurchaseState.loaded(_purchases));
     } catch (e) {
       emit(PurchaseState.error('Failed to save purchase: $e'));
@@ -49,8 +49,8 @@ class PurchaseBloc extends Bloc<PurchaseEvent, PurchaseState> {
   ) async {
     emit(const PurchaseState.loading());
     try {
-      await _purchaseRepository.delete(purchase: event.purchase);
-      _purchases = await _purchaseRepository.getAll();
+      await _purchaseRepository.deletePurchase(event.purchase);
+      _purchases = await _purchaseRepository.getPurchases();
       emit(PurchaseState.loaded(_purchases));
     } catch (e) {
       emit(PurchaseState.error('Failed to delete purchase: $e'));

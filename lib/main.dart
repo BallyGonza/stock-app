@@ -24,17 +24,17 @@ class Main extends StatelessWidget {
       providers: [
         RepositoryProvider(
           create: (context) => CategoryRepository(
-            categoryBox: Hive.box<Category>('categories_box'),
+            categoryBox: Hive.box<CategoryModel>('categories_box'),
           ),
         ),
         RepositoryProvider(
           create: (context) => ProductRepository(
-            productBox: Hive.box<Product>('products_box'),
+            productBox: Hive.box<ProductModel>('products_box'),
           ),
         ),
         RepositoryProvider(
           create: (context) => PurchaseRepository(
-            purchaseBox: Hive.box<Purchase>('purchases_box'),
+            purchaseBox: Hive.box<PurchaseModel>('purchases_box'),
           ),
         ),
       ],

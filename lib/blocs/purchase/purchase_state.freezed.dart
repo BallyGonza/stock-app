@@ -20,7 +20,7 @@ mixin _$PurchaseState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Purchase> purchases) loaded,
+    required TResult Function(List<PurchaseModel> purchases) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$PurchaseState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Purchase> purchases)? loaded,
+    TResult? Function(List<PurchaseModel> purchases)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$PurchaseState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Purchase> purchases)? loaded,
+    TResult Function(List<PurchaseModel> purchases)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -127,7 +127,7 @@ class _$PurchaseInitialStateImpl implements PurchaseInitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Purchase> purchases) loaded,
+    required TResult Function(List<PurchaseModel> purchases) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -138,7 +138,7 @@ class _$PurchaseInitialStateImpl implements PurchaseInitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Purchase> purchases)? loaded,
+    TResult? Function(List<PurchaseModel> purchases)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -149,7 +149,7 @@ class _$PurchaseInitialStateImpl implements PurchaseInitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Purchase> purchases)? loaded,
+    TResult Function(List<PurchaseModel> purchases)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -242,7 +242,7 @@ class _$PurchaseLoadingStateImpl implements PurchaseLoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Purchase> purchases) loaded,
+    required TResult Function(List<PurchaseModel> purchases) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -253,7 +253,7 @@ class _$PurchaseLoadingStateImpl implements PurchaseLoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Purchase> purchases)? loaded,
+    TResult? Function(List<PurchaseModel> purchases)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -264,7 +264,7 @@ class _$PurchaseLoadingStateImpl implements PurchaseLoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Purchase> purchases)? loaded,
+    TResult Function(List<PurchaseModel> purchases)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -322,7 +322,7 @@ abstract class _$$PurchaseLoadedStateImplCopyWith<$Res> {
           $Res Function(_$PurchaseLoadedStateImpl) then) =
       __$$PurchaseLoadedStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Purchase> purchases});
+  $Res call({List<PurchaseModel> purchases});
 }
 
 /// @nodoc
@@ -342,7 +342,7 @@ class __$$PurchaseLoadedStateImplCopyWithImpl<$Res>
       null == purchases
           ? _value._purchases
           : purchases // ignore: cast_nullable_to_non_nullable
-              as List<Purchase>,
+              as List<PurchaseModel>,
     ));
   }
 }
@@ -350,12 +350,12 @@ class __$$PurchaseLoadedStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PurchaseLoadedStateImpl implements PurchaseLoadedState {
-  const _$PurchaseLoadedStateImpl(final List<Purchase> purchases)
+  const _$PurchaseLoadedStateImpl(final List<PurchaseModel> purchases)
       : _purchases = purchases;
 
-  final List<Purchase> _purchases;
+  final List<PurchaseModel> _purchases;
   @override
-  List<Purchase> get purchases {
+  List<PurchaseModel> get purchases {
     if (_purchases is EqualUnmodifiableListView) return _purchases;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_purchases);
@@ -391,7 +391,7 @@ class _$PurchaseLoadedStateImpl implements PurchaseLoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Purchase> purchases) loaded,
+    required TResult Function(List<PurchaseModel> purchases) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(purchases);
@@ -402,7 +402,7 @@ class _$PurchaseLoadedStateImpl implements PurchaseLoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Purchase> purchases)? loaded,
+    TResult? Function(List<PurchaseModel> purchases)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(purchases);
@@ -413,7 +413,7 @@ class _$PurchaseLoadedStateImpl implements PurchaseLoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Purchase> purchases)? loaded,
+    TResult Function(List<PurchaseModel> purchases)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -462,10 +462,10 @@ class _$PurchaseLoadedStateImpl implements PurchaseLoadedState {
 }
 
 abstract class PurchaseLoadedState implements PurchaseState {
-  const factory PurchaseLoadedState(final List<Purchase> purchases) =
+  const factory PurchaseLoadedState(final List<PurchaseModel> purchases) =
       _$PurchaseLoadedStateImpl;
 
-  List<Purchase> get purchases;
+  List<PurchaseModel> get purchases;
   @JsonKey(ignore: true)
   _$$PurchaseLoadedStateImplCopyWith<_$PurchaseLoadedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -538,7 +538,7 @@ class _$PurchaseErrorStateImpl implements PurchaseErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Purchase> purchases) loaded,
+    required TResult Function(List<PurchaseModel> purchases) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -549,7 +549,7 @@ class _$PurchaseErrorStateImpl implements PurchaseErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Purchase> purchases)? loaded,
+    TResult? Function(List<PurchaseModel> purchases)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -560,7 +560,7 @@ class _$PurchaseErrorStateImpl implements PurchaseErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Purchase> purchases)? loaded,
+    TResult Function(List<PurchaseModel> purchases)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

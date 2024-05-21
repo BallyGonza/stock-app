@@ -1,11 +1,11 @@
 import 'package:hive/hive.dart';
 import 'package:stock_app/data/data.dart';
 
-part 'purchase.g.dart';
+part 'purchase_model.g.dart';
 
 @HiveType(typeId: 2)
-class Purchase extends HiveObject {
-  Purchase({
+class PurchaseModel extends HiveObject {
+  PurchaseModel({
     required this.id,
     required this.products,
     required this.total,
@@ -14,24 +14,28 @@ class Purchase extends HiveObject {
   });
 
   @HiveField(0)
-  String id;
-  @HiveField(1)
-  List<Product> products;
-  @HiveField(2)
-  DateTime date;
-  @HiveField(3)
-  double total;
-  @HiveField(4)
-  String? market;
+  final String id;
 
-  Purchase copyWith({
+  @HiveField(1)
+  final List<ProductModel> products;
+
+  @HiveField(2)
+  final DateTime date;
+
+  @HiveField(3)
+  final double total;
+
+  @HiveField(4)
+  final String? market;
+
+  PurchaseModel copyWith({
     String? id,
-    List<Product>? products,
+    List<ProductModel>? products,
     DateTime? date,
     double? total,
     String? market,
   }) {
-    return Purchase(
+    return PurchaseModel(
       id: id ?? this.id,
       products: products ?? this.products,
       date: date ?? this.date,

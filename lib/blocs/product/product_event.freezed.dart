@@ -19,22 +19,22 @@ mixin _$ProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Product product) save,
-    required TResult Function(Product product) delete,
+    required TResult Function(ProductModel product) save,
+    required TResult Function(ProductModel product) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Product product)? save,
-    TResult? Function(Product product)? delete,
+    TResult? Function(ProductModel product)? save,
+    TResult? Function(ProductModel product)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Product product)? save,
-    TResult Function(Product product)? delete,
+    TResult Function(ProductModel product)? save,
+    TResult Function(ProductModel product)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,8 +120,8 @@ class _$ProductInitialEventImpl implements ProductInitialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Product product) save,
-    required TResult Function(Product product) delete,
+    required TResult Function(ProductModel product) save,
+    required TResult Function(ProductModel product) delete,
   }) {
     return init();
   }
@@ -130,8 +130,8 @@ class _$ProductInitialEventImpl implements ProductInitialEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Product product)? save,
-    TResult? Function(Product product)? delete,
+    TResult? Function(ProductModel product)? save,
+    TResult? Function(ProductModel product)? delete,
   }) {
     return init?.call();
   }
@@ -140,8 +140,8 @@ class _$ProductInitialEventImpl implements ProductInitialEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Product product)? save,
-    TResult Function(Product product)? delete,
+    TResult Function(ProductModel product)? save,
+    TResult Function(ProductModel product)? delete,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -195,7 +195,7 @@ abstract class _$$ProductSaveEventImplCopyWith<$Res> {
           $Res Function(_$ProductSaveEventImpl) then) =
       __$$ProductSaveEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Product product});
+  $Res call({ProductModel product});
 }
 
 /// @nodoc
@@ -215,7 +215,7 @@ class __$$ProductSaveEventImplCopyWithImpl<$Res>
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as Product,
+              as ProductModel,
     ));
   }
 }
@@ -226,7 +226,7 @@ class _$ProductSaveEventImpl implements ProductSaveEvent {
   const _$ProductSaveEventImpl({required this.product});
 
   @override
-  final Product product;
+  final ProductModel product;
 
   @override
   String toString() {
@@ -255,8 +255,8 @@ class _$ProductSaveEventImpl implements ProductSaveEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Product product) save,
-    required TResult Function(Product product) delete,
+    required TResult Function(ProductModel product) save,
+    required TResult Function(ProductModel product) delete,
   }) {
     return save(product);
   }
@@ -265,8 +265,8 @@ class _$ProductSaveEventImpl implements ProductSaveEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Product product)? save,
-    TResult? Function(Product product)? delete,
+    TResult? Function(ProductModel product)? save,
+    TResult? Function(ProductModel product)? delete,
   }) {
     return save?.call(product);
   }
@@ -275,8 +275,8 @@ class _$ProductSaveEventImpl implements ProductSaveEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Product product)? save,
-    TResult Function(Product product)? delete,
+    TResult Function(ProductModel product)? save,
+    TResult Function(ProductModel product)? delete,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -321,10 +321,10 @@ class _$ProductSaveEventImpl implements ProductSaveEvent {
 }
 
 abstract class ProductSaveEvent implements ProductEvent {
-  const factory ProductSaveEvent({required final Product product}) =
+  const factory ProductSaveEvent({required final ProductModel product}) =
       _$ProductSaveEventImpl;
 
-  Product get product;
+  ProductModel get product;
   @JsonKey(ignore: true)
   _$$ProductSaveEventImplCopyWith<_$ProductSaveEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -336,7 +336,7 @@ abstract class _$$ProductDeleteEventImplCopyWith<$Res> {
           $Res Function(_$ProductDeleteEventImpl) then) =
       __$$ProductDeleteEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Product product});
+  $Res call({ProductModel product});
 }
 
 /// @nodoc
@@ -356,7 +356,7 @@ class __$$ProductDeleteEventImplCopyWithImpl<$Res>
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as Product,
+              as ProductModel,
     ));
   }
 }
@@ -367,7 +367,7 @@ class _$ProductDeleteEventImpl implements ProductDeleteEvent {
   const _$ProductDeleteEventImpl({required this.product});
 
   @override
-  final Product product;
+  final ProductModel product;
 
   @override
   String toString() {
@@ -396,8 +396,8 @@ class _$ProductDeleteEventImpl implements ProductDeleteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Product product) save,
-    required TResult Function(Product product) delete,
+    required TResult Function(ProductModel product) save,
+    required TResult Function(ProductModel product) delete,
   }) {
     return delete(product);
   }
@@ -406,8 +406,8 @@ class _$ProductDeleteEventImpl implements ProductDeleteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Product product)? save,
-    TResult? Function(Product product)? delete,
+    TResult? Function(ProductModel product)? save,
+    TResult? Function(ProductModel product)? delete,
   }) {
     return delete?.call(product);
   }
@@ -416,8 +416,8 @@ class _$ProductDeleteEventImpl implements ProductDeleteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Product product)? save,
-    TResult Function(Product product)? delete,
+    TResult Function(ProductModel product)? save,
+    TResult Function(ProductModel product)? delete,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -462,10 +462,10 @@ class _$ProductDeleteEventImpl implements ProductDeleteEvent {
 }
 
 abstract class ProductDeleteEvent implements ProductEvent {
-  const factory ProductDeleteEvent({required final Product product}) =
+  const factory ProductDeleteEvent({required final ProductModel product}) =
       _$ProductDeleteEventImpl;
 
-  Product get product;
+  ProductModel get product;
   @JsonKey(ignore: true)
   _$$ProductDeleteEventImplCopyWith<_$ProductDeleteEventImpl> get copyWith =>
       throw _privateConstructorUsedError;

@@ -17,19 +17,21 @@ class _NewProductScreenState extends State<NewProductScreen> {
   final _priceController = TextEditingController();
   final _quantityController = TextEditingController();
   final _expirationDateController = TextEditingController();
-  late Category _category;
+  final _brandController = TextEditingController();
+  late CategoryModel _category;
 
   @override
   void dispose() {
     _nameController.dispose();
     _priceController.dispose();
     _quantityController.dispose();
+    _brandController.dispose();
     super.dispose();
   }
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      final product = Product(
+      final product = ProductModel(
         id: const Uuid().v1(),
         name: _nameController.text,
         category: _category,
@@ -38,6 +40,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
             : null,
         quantity: int.parse(_quantityController.text),
         price: double.parse(_priceController.text),
+        brand: _brandController.text,
       );
       Navigator.pop(context, product);
     }
@@ -93,6 +96,17 @@ class _NewProductScreenState extends State<NewProductScreen> {
                   return null;
                 },
               ),
+              // textFormField for brand
+              TextFormField(
+                controller: _brandController,
+                decoration: const InputDecoration(labelText: 'Product Brand'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a product brand';
+                  }
+                  return null;
+                },
+              ),
               // DateTimeField for expiration date
               TextButton(
                 onPressed: () => showDatePicker(
@@ -117,7 +131,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
                 builder: (context, state) {
                   return state.maybeWhen(
                     loaded: (categories) {
-                      return DropdownButtonFormField<Category>(
+                      return DropdownButtonFormField<CategoryModel>(
                         onChanged: (value) {
                           setState(() {
                             _category = value!;

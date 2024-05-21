@@ -3,20 +3,20 @@ import 'package:stock_app/data/data.dart';
 
 class PurchaseRepository {
   PurchaseRepository({required this.purchaseBox});
-  final Box<Purchase> purchaseBox;
+  final Box<PurchaseModel> purchaseBox;
 
-  Future<List<Purchase>> getAll() async {
+  Future<List<PurchaseModel>> getPurchases() async {
     if (purchaseBox.isEmpty) {
       return [];
     }
     return purchaseBox.values.toList();
   }
 
-  Future<void> save({required Purchase purchase}) async {
+  Future<void> savePurchase(PurchaseModel purchase) async {
     await purchaseBox.put(purchase.id, purchase);
   }
 
-  Future<void> delete({required Purchase purchase}) async {
+  Future<void> deletePurchase(PurchaseModel purchase) async {
     await purchaseBox.delete(purchase.id);
   }
 }

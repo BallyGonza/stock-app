@@ -14,7 +14,7 @@ class NewPurchaseScreen extends StatefulWidget {
 }
 
 class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
-  List<Product> products = [];
+  List<ProductModel> products = [];
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute<Product>(
+            MaterialPageRoute<ProductModel>(
               builder: (context) => const NewProductScreen(),
             ),
           ).then((value) {
@@ -101,7 +101,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
   void _purchase(BuildContext context) {
     context.read<PurchaseBloc>().add(
           PurchaseEvent.save(
-            purchase: Purchase(
+            purchase: PurchaseModel(
               id: const Uuid().v1(),
               date: DateTime.now(),
               products: products,

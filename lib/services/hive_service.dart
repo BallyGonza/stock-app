@@ -8,14 +8,14 @@ class HiveService {
   static Future<void> initializeHive() async {
     try {
       Hive
-        ..registerAdapter(CategoryAdapter())
-        ..registerAdapter(ProductAdapter())
-        ..registerAdapter(PurchaseAdapter());
+        ..registerAdapter(CategoryModelAdapter())
+        ..registerAdapter(ProductModelAdapter())
+        ..registerAdapter(PurchaseModelAdapter());
       WidgetsFlutterBinding.ensureInitialized();
       await Hive.initFlutter();
-      await Hive.openBox<Category>('categories_box');
-      await Hive.openBox<Product>('products_box');
-      await Hive.openBox<Purchase>('purchases_box');
+      await Hive.openBox<CategoryModel>('categories_box');
+      await Hive.openBox<ProductModel>('products_box');
+      await Hive.openBox<PurchaseModel>('purchases_box');
     } catch (e) {
       log('Error initializing Hive: $e');
     }

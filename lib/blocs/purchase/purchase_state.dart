@@ -7,7 +7,7 @@ part 'purchase_state.freezed.dart';
 class PurchaseState with _$PurchaseState {
   const factory PurchaseState.initial() = PurchaseInitialState;
   const factory PurchaseState.loading() = PurchaseLoadingState;
-  const factory PurchaseState.loaded(List<Purchase> purchases) =
+  const factory PurchaseState.loaded(List<PurchaseModel> purchases) =
       PurchaseLoadedState;
   const factory PurchaseState.error(String message) = PurchaseErrorState;
 }

@@ -3,20 +3,20 @@ import 'package:stock_app/data/data.dart';
 
 class ProductRepository {
   ProductRepository({required this.productBox});
-  final Box<Product> productBox;
+  final Box<ProductModel> productBox;
 
-  Future<List<Product>> getAll() async {
+  Future<List<ProductModel>> getProducts() async {
     if (productBox.isEmpty) {
       return [];
     }
     return productBox.values.toList();
   }
 
-  Future<void> save({required Product product}) async {
+  Future<void> saveProduct(ProductModel product) async {
     await productBox.put(product.id, product);
   }
 
-  Future<void> delete({required Product product}) async {
+  Future<void> deleteProduct(ProductModel product) async {
     await productBox.delete(product.id);
   }
 }

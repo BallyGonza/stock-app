@@ -14,7 +14,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   }
 
   final CategoryRepository _categoryRepository;
-  List<Category> _categories = [];
+  List<CategoryModel> _categories = [];
 
   Future<void> _onInit(
     CategoryInitialEvent event,
@@ -29,7 +29,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   ) async {
     emit(const CategoryState.loading());
     try {
-      await _categoryRepository.save(category: event.category);
+      await _categoryRepository.saveCategory(event.category);
       await _loadCategories(emit);
     } catch (e) {
       emit(CategoryState.error('Failed to save category: $e'));
@@ -42,7 +42,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   ) async {
     emit(const CategoryState.loading());
     try {
-      await _categoryRepository.delete(category: event.category);
+      await _categoryRepository.deleteCategory(event.category);
       await _loadCategories(emit);
     } catch (e) {
       emit(CategoryState.error('Failed to delete category: $e'));

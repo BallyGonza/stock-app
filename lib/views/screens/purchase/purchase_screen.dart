@@ -11,7 +11,7 @@ class PurchaseScreen extends StatelessWidget {
     super.key,
   });
 
-  final Purchase purchase;
+  final PurchaseModel purchase;
 
   @override
   Widget build(BuildContext context) {

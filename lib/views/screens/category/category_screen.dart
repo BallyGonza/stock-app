@@ -10,7 +10,7 @@ class CategoryScreen extends StatelessWidget {
     super.key,
   });
 
-  final Category category;
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ class ProductCard extends StatelessWidget {
   const ProductCard.category({required this.product, super.key})
       : _isPurchase = false;
 
-  final Product product;
+  final ProductModel product;
   final bool _isPurchase;
 
   @override

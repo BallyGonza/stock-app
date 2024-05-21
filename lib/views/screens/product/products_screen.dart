@@ -5,12 +5,12 @@ import 'package:stock_app/views/views.dart';
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({required this.products, super.key});
 
-  final List<Product> products;
+  final List<ProductModel> products;
 
   @override
   Widget build(BuildContext context) {
     // Sort products by expiry date
-    final sortedProducts = List<Product>.from(products)
+    final sortedProducts = List<ProductModel>.from(products)
       ..sort((a, b) {
         if (a.expiryDate == null && b.expiryDate == null) {
           return 0;
