@@ -24,15 +24,26 @@ class PurchaseScreen extends StatelessWidget {
               IconButton(
                 icon: const FaIcon(FontAwesomeIcons.trashCan),
                 onPressed: () {
-                  context.read<PurchaseBloc>().add(
-                        PurchaseEvent.delete(purchase),
-                      );
-                  for (final product in purchase.products) {
-                    context.read<ProductBloc>().add(
-                          ProductEvent.delete(product),
-                        );
-                  }
-                  Navigator.pop(context);
+                  showDialog<CustomAlertDialog>(
+                    context: context,
+                    builder: (context) => CustomAlertDialog(
+                      title: 'Eliminar compra',
+                      content:
+                          const Text('¿Estás seguro de eliminar esta compra?'),
+                      onPressed: () {
+                        context.read<PurchaseBloc>().add(
+                              PurchaseEvent.delete(purchase),
+                            );
+                        for (final product in purchase.products) {
+                          context.read<ProductBloc>().add(
+                                ProductEvent.delete(product),
+                              );
+                        }
+                        Navigator.pop(context);
+                      },
+                      primaryActionTitle: 'Eliminar',
+                    ),
+                  );
                 },
               ),
             ],
@@ -54,19 +65,19 @@ class PurchaseScreen extends StatelessWidget {
             ),
           ),
           // Total price section
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-            sliver: SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Total:'),
-                  Text(arg.format(purchase.total)),
-                ],
-              ),
-            ),
-          ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.only(bottom: 16),
+        height: 56,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('Total:'),
+            Text(arg.format(purchase.total)),
+          ],
+        ),
       ),
     );
   }

@@ -25,9 +25,7 @@ class ProductGroupCard extends StatelessWidget {
             MaterialPageRoute<ProductsScreen>(
               builder: (context) => ProductsScreen(
                 products: categoryProducts
-                    .where(
-                      (product) => product.name == productName,
-                    )
+                    .where((product) => product.name == productName)
                     .toList(),
               ),
             ),

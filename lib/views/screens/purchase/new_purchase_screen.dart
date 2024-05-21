@@ -39,29 +39,8 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
       ),
       body: CustomScrollView(
         slivers: [
-          CustomSliverAppBar.text(
+          const CustomSliverAppBar.text(
             title: 'Nueva compra',
-            actions: [
-              IconButton(
-                icon: const FaIcon(FontAwesomeIcons.floppyDisk),
-                onPressed: () => showDialog<CustomAlertDialog>(
-                  context: context,
-                  builder: (context) => CustomAlertDialog(
-                    title: 'Confirmar compra',
-                    content: TextFormField(
-                      textCapitalization: TextCapitalization.words,
-                      controller: _marketController,
-                      decoration: const InputDecoration(
-                        hintText: 'Nombre del mercado',
-                        labelText: 'Mercado',
-                      ),
-                    ),
-                    onPressed: () => _purchase(context),
-                    primaryActionTitle: 'Confirmar',
-                  ),
-                ),
-              ),
-            ],
             arrowBack: true,
           ),
           if (products.isEmpty)
@@ -129,10 +108,43 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
             ),
         ],
       ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.only(bottom: 16),
+        height: 56,
+        child: ElevatedButton(
+          onPressed: () => showDialog<CustomAlertDialog>(
+            context: context,
+            builder: (context) => CustomAlertDialog(
+              title: 'Confirmar compra',
+              content: TextFormField(
+                textCapitalization: TextCapitalization.words,
+                controller: _marketController,
+                decoration: const InputDecoration(
+                  hintText: 'Nombre del mercado',
+                  labelText: 'Mercado',
+                ),
+              ),
+              onPressed: () => _purchase(context),
+              primaryActionTitle: 'Confirmar',
+            ),
+          ),
+          child: const Text('Guardar compra'),
+        ),
+      ),
     );
   }
 
   void _purchase(BuildContext context) {
+    if (products.isEmpty) {
+      // Show error
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('No hay productos en la compra'),
+        ),
+      );
+      return;
+    }
     context.read<PurchaseBloc>().add(
           PurchaseEvent.save(
             PurchaseModel(

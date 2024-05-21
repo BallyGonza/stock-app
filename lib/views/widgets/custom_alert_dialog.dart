@@ -23,6 +23,12 @@ class CustomAlertDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text('Cancel', style: TextStyle(color: Colors.red)),
+        ),
+        TextButton(
+          onPressed: () {
             onPressed();
             Navigator.of(context).pop();
           },
@@ -30,12 +36,6 @@ class CustomAlertDialog extends StatelessWidget {
             primaryActionTitle,
             style: const TextStyle(color: Colors.green),
           ),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text('Cancel', style: TextStyle(color: Colors.red)),
         ),
       ],
     );

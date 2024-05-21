@@ -23,7 +23,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
   final _quantityController = TextEditingController();
   final _expirationDateController = TextEditingController();
   final _brandController = TextEditingController();
-  late CategoryModel _category;
+  late dynamic _category;
 
   @override
   void initState() {
@@ -38,11 +38,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
       _brandController.text = widget.product!.brand;
       _category = widget.product!.category;
     } else {
-      _category = context.read<CategoryBloc>().state.maybeWhen(
-            loaded: (categories) => categories.first,
-            orElse: () =>
-                CategoryModel(id: '', name: '', icon: AppImages.cartIcon),
-          );
+      _category = null;
     }
   }
 
@@ -57,10 +53,18 @@ class _NewProductScreenState extends State<NewProductScreen> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
+      if (_category == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Please select a category'),
+          ),
+        );
+        return;
+      }
       final product = ProductModel(
         id: widget.product?.id ?? const Uuid().v1(),
         name: _nameController.text.trim(),
-        category: _category,
+        category: _category as CategoryModel,
         expiryDate: _expirationDateController.text.isNotEmpty
             ? dateFormat.parse(_expirationDateController.text)
             : null,
@@ -210,7 +214,9 @@ class _NewProductScreenState extends State<NewProductScreen> {
                                       ),
                                     )
                                     .toList(),
-                                value: _category,
+                                value: _category == null
+                                    ? null
+                                    : _category as CategoryModel,
                                 hint: const Text('Category'),
                               ),
                             );
@@ -219,17 +225,21 @@ class _NewProductScreenState extends State<NewProductScreen> {
                         );
                       },
                     ),
-                    const SizedBox(height: 12),
-                    ElevatedButton(
-                      onPressed: _submitForm,
-                      child: const Text('Save Product'),
-                    ),
                   ],
                 ),
               ),
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.only(bottom: 16),
+        height: 56,
+        child: ElevatedButton(
+          onPressed: _submitForm,
+          child: const Text('Agregar Producto'),
+        ),
       ),
     );
   }

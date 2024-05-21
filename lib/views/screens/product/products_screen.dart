@@ -30,7 +30,25 @@ class _ProductsScreenState extends State<ProductsScreen> {
               child: BlocBuilder<ProductBloc, ProductState>(
                 builder: (context, state) {
                   return state.maybeWhen(
-                    loaded: _buildProductsList,
+                    loaded: (products) {
+                      // Filter products by category
+                      final categoryProducts = products
+                          .where(
+                            (product) =>
+                                product.category.name ==
+                                widget.products.first.category.name,
+                          )
+                          .toList();
+
+                      final filteredProducts = categoryProducts
+                          .where(
+                            (product) =>
+                                product.name == widget.products.first.name,
+                          )
+                          .toList();
+
+                      return _buildProductsList(filteredProducts);
+                    },
                     orElse: () =>
                         const Center(child: CircularProgressIndicator()),
                     error: (error) => Center(child: Text('Error: $error')),
@@ -95,12 +113,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
   }
 
   void _onRemoveProduct(ProductModel product) {
-    if (product.quantity > 1) {
-      context.read<ProductBloc>().add(
-            ProductEvent.save(product.copyWith(quantity: product.quantity - 1)),
-          );
-    } else {
-      context.read<ProductBloc>().add(ProductEvent.delete(product));
-    }
+    setState(() {
+      if (product.quantity > 1) {
+        context.read<ProductBloc>().add(
+              ProductEvent.save(
+                product.copyWith(quantity: product.quantity - 1),
+              ),
+            );
+      } else {
+        context.read<ProductBloc>().add(ProductEvent.delete(product));
+      }
+    });
   }
 }
