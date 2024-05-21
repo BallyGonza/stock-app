@@ -212,7 +212,7 @@ class __$$ProductSaveEventImplCopyWithImpl<$Res>
     Object? product = null,
   }) {
     return _then(_$ProductSaveEventImpl(
-      product: null == product
+      null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductModel,
@@ -223,7 +223,7 @@ class __$$ProductSaveEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductSaveEventImpl implements ProductSaveEvent {
-  const _$ProductSaveEventImpl({required this.product});
+  const _$ProductSaveEventImpl(this.product);
 
   @override
   final ProductModel product;
@@ -321,7 +321,7 @@ class _$ProductSaveEventImpl implements ProductSaveEvent {
 }
 
 abstract class ProductSaveEvent implements ProductEvent {
-  const factory ProductSaveEvent({required final ProductModel product}) =
+  const factory ProductSaveEvent(final ProductModel product) =
       _$ProductSaveEventImpl;
 
   ProductModel get product;
@@ -353,7 +353,7 @@ class __$$ProductDeleteEventImplCopyWithImpl<$Res>
     Object? product = null,
   }) {
     return _then(_$ProductDeleteEventImpl(
-      product: null == product
+      null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductModel,
@@ -364,7 +364,7 @@ class __$$ProductDeleteEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductDeleteEventImpl implements ProductDeleteEvent {
-  const _$ProductDeleteEventImpl({required this.product});
+  const _$ProductDeleteEventImpl(this.product);
 
   @override
   final ProductModel product;
@@ -462,7 +462,7 @@ class _$ProductDeleteEventImpl implements ProductDeleteEvent {
 }
 
 abstract class ProductDeleteEvent implements ProductEvent {
-  const factory ProductDeleteEvent({required final ProductModel product}) =
+  const factory ProductDeleteEvent(final ProductModel product) =
       _$ProductDeleteEventImpl;
 
   ProductModel get product;

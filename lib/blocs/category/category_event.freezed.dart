@@ -212,7 +212,7 @@ class __$$CategorySaveEventImplCopyWithImpl<$Res>
     Object? category = null,
   }) {
     return _then(_$CategorySaveEventImpl(
-      category: null == category
+      null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryModel,
@@ -223,7 +223,7 @@ class __$$CategorySaveEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CategorySaveEventImpl implements CategorySaveEvent {
-  const _$CategorySaveEventImpl({required this.category});
+  const _$CategorySaveEventImpl(this.category);
 
   @override
   final CategoryModel category;
@@ -322,7 +322,7 @@ class _$CategorySaveEventImpl implements CategorySaveEvent {
 }
 
 abstract class CategorySaveEvent implements CategoryEvent {
-  const factory CategorySaveEvent({required final CategoryModel category}) =
+  const factory CategorySaveEvent(final CategoryModel category) =
       _$CategorySaveEventImpl;
 
   CategoryModel get category;
@@ -354,7 +354,7 @@ class __$$CategoryDeleteEventImplCopyWithImpl<$Res>
     Object? category = null,
   }) {
     return _then(_$CategoryDeleteEventImpl(
-      category: null == category
+      null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryModel,
@@ -365,7 +365,7 @@ class __$$CategoryDeleteEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CategoryDeleteEventImpl implements CategoryDeleteEvent {
-  const _$CategoryDeleteEventImpl({required this.category});
+  const _$CategoryDeleteEventImpl(this.category);
 
   @override
   final CategoryModel category;
@@ -464,7 +464,7 @@ class _$CategoryDeleteEventImpl implements CategoryDeleteEvent {
 }
 
 abstract class CategoryDeleteEvent implements CategoryEvent {
-  const factory CategoryDeleteEvent({required final CategoryModel category}) =
+  const factory CategoryDeleteEvent(final CategoryModel category) =
       _$CategoryDeleteEventImpl;
 
   CategoryModel get category;

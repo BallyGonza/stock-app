@@ -14,6 +14,7 @@ class NewPurchaseScreen extends StatefulWidget {
 }
 
 class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
+  final _marketController = TextEditingController();
   List<ProductModel> products = [];
 
   @override
@@ -43,7 +44,22 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
             actions: [
               IconButton(
                 icon: const FaIcon(FontAwesomeIcons.floppyDisk),
-                onPressed: () => _purchase(context),
+                onPressed: () => showDialog<CustomAlertDialog>(
+                  context: context,
+                  builder: (context) => CustomAlertDialog(
+                    title: 'Confirmar compra',
+                    content: TextFormField(
+                      textCapitalization: TextCapitalization.words,
+                      controller: _marketController,
+                      decoration: const InputDecoration(
+                        hintText: 'Nombre del mercado',
+                        labelText: 'Mercado',
+                      ),
+                    ),
+                    onPressed: () => _purchase(context),
+                    primaryActionTitle: 'Confirmar',
+                  ),
+                ),
               ),
             ],
             arrowBack: true,
@@ -61,8 +77,26 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     final product = products[index];
-                    return ProductCard.purchase(
-                      product: product,
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(
+                          MaterialPageRoute<ProductModel>(
+                            builder: (context) =>
+                                NewProductScreen.edit(product: product),
+                          ),
+                        )
+                            .then((value) {
+                          if (value != null) {
+                            setState(() {
+                              products[index] = value;
+                            });
+                          }
+                        });
+                      },
+                      child: ProductCard.purchase(
+                        product: product,
+                      ),
                     );
                   },
                   childCount: products.length,
@@ -101,10 +135,11 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
   void _purchase(BuildContext context) {
     context.read<PurchaseBloc>().add(
           PurchaseEvent.save(
-            purchase: PurchaseModel(
+            PurchaseModel(
               id: const Uuid().v1(),
               date: DateTime.now(),
               products: products,
+              market: _marketController.text.trim(),
               total: products.fold<double>(
                 0,
                 (previousValue, element) =>
@@ -116,7 +151,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
 
     for (final product in products) {
       context.read<ProductBloc>().add(
-            ProductEvent.save(product: product),
+            ProductEvent.save(product),
           );
     }
 

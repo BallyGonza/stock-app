@@ -16,15 +16,6 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        // onTap: () {
-        //   if (!_isPurchase) {
-        //     Navigator.of(context).push(
-        //       MaterialPageRoute<Product>(
-        //         builder: (context) => ProductScreen(product: product),
-        //       ),
-        //     );
-        //   }
-        // },
         leading: _isPurchase
             ? CircleAvatar(
                 child: SvgPicture.asset(product.category.icon),

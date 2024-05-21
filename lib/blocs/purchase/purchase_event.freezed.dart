@@ -212,7 +212,7 @@ class __$$PurchaseSaveEventImplCopyWithImpl<$Res>
     Object? purchase = null,
   }) {
     return _then(_$PurchaseSaveEventImpl(
-      purchase: null == purchase
+      null == purchase
           ? _value.purchase
           : purchase // ignore: cast_nullable_to_non_nullable
               as PurchaseModel,
@@ -223,7 +223,7 @@ class __$$PurchaseSaveEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PurchaseSaveEventImpl implements PurchaseSaveEvent {
-  const _$PurchaseSaveEventImpl({required this.purchase});
+  const _$PurchaseSaveEventImpl(this.purchase);
 
   @override
   final PurchaseModel purchase;
@@ -322,7 +322,7 @@ class _$PurchaseSaveEventImpl implements PurchaseSaveEvent {
 }
 
 abstract class PurchaseSaveEvent implements PurchaseEvent {
-  const factory PurchaseSaveEvent({required final PurchaseModel purchase}) =
+  const factory PurchaseSaveEvent(final PurchaseModel purchase) =
       _$PurchaseSaveEventImpl;
 
   PurchaseModel get purchase;
@@ -354,7 +354,7 @@ class __$$PurchaseDeleteEventImplCopyWithImpl<$Res>
     Object? purchase = null,
   }) {
     return _then(_$PurchaseDeleteEventImpl(
-      purchase: null == purchase
+      null == purchase
           ? _value.purchase
           : purchase // ignore: cast_nullable_to_non_nullable
               as PurchaseModel,
@@ -365,7 +365,7 @@ class __$$PurchaseDeleteEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PurchaseDeleteEventImpl implements PurchaseDeleteEvent {
-  const _$PurchaseDeleteEventImpl({required this.purchase});
+  const _$PurchaseDeleteEventImpl(this.purchase);
 
   @override
   final PurchaseModel purchase;
@@ -464,7 +464,7 @@ class _$PurchaseDeleteEventImpl implements PurchaseDeleteEvent {
 }
 
 abstract class PurchaseDeleteEvent implements PurchaseEvent {
-  const factory PurchaseDeleteEvent({required final PurchaseModel purchase}) =
+  const factory PurchaseDeleteEvent(final PurchaseModel purchase) =
       _$PurchaseDeleteEventImpl;
 
   PurchaseModel get purchase;

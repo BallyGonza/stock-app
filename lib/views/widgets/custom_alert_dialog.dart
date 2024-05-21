@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stock_app/theme.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({
@@ -19,7 +18,6 @@ class CustomAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      backgroundColor: theme.primaryColor,
       title: Text(title),
       content: content,
       actions: [

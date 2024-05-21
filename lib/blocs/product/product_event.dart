@@ -6,8 +6,6 @@ part 'product_event.freezed.dart';
 @freezed
 class ProductEvent with _$ProductEvent {
   const factory ProductEvent.init() = ProductInitialEvent;
-  const factory ProductEvent.save({required ProductModel product}) =
-      ProductSaveEvent;
-  const factory ProductEvent.delete({required ProductModel product}) =
-      ProductDeleteEvent;
+  const factory ProductEvent.save(ProductModel product) = ProductSaveEvent;
+  const factory ProductEvent.delete(ProductModel product) = ProductDeleteEvent;
 }

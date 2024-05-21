@@ -25,11 +25,11 @@ class PurchaseScreen extends StatelessWidget {
                 icon: const FaIcon(FontAwesomeIcons.trashCan),
                 onPressed: () {
                   context.read<PurchaseBloc>().add(
-                        PurchaseEvent.delete(purchase: purchase),
+                        PurchaseEvent.delete(purchase),
                       );
                   for (final product in purchase.products) {
                     context.read<ProductBloc>().add(
-                          ProductEvent.delete(product: product),
+                          ProductEvent.delete(product),
                         );
                   }
                   Navigator.pop(context);
