@@ -200,7 +200,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
                               subtitle: DropdownButtonFormField<CategoryModel>(
                                 onChanged: (value) {
                                   setState(() {
-                                    _category = value!;
+                                    _category = value;
                                   });
                                 },
                                 items: categories
