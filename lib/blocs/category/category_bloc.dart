@@ -20,13 +20,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     CategoryInitialEvent event,
     Emitter<CategoryState> emit,
   ) async {
-    emit(const CategoryState.loading());
-    try {
-      _categories = await _categoryRepository.getAll();
-      emit(CategoryState.loaded(_categories));
-    } catch (e) {
-      emit(CategoryState.error('Failed to load categories: $e'));
-    }
+    await _loadCategories(emit);
   }
 
   Future<void> _onSave(
@@ -36,8 +30,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     emit(const CategoryState.loading());
     try {
       await _categoryRepository.save(category: event.category);
-      _categories = await _categoryRepository.getAll();
-      emit(CategoryState.loaded(_categories));
+      await _loadCategories(emit);
     } catch (e) {
       emit(CategoryState.error('Failed to save category: $e'));
     }
@@ -50,10 +43,19 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     emit(const CategoryState.loading());
     try {
       await _categoryRepository.delete(category: event.category);
+      await _loadCategories(emit);
+    } catch (e) {
+      emit(CategoryState.error('Failed to delete category: $e'));
+    }
+  }
+
+  Future<void> _loadCategories(Emitter<CategoryState> emit) async {
+    emit(const CategoryState.loading());
+    try {
       _categories = await _categoryRepository.getAll();
       emit(CategoryState.loaded(_categories));
     } catch (e) {
-      emit(CategoryState.error('Failed to delete category: $e'));
+      emit(CategoryState.error('Failed to load categories: $e'));
     }
   }
 }
