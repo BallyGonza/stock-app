@@ -101,7 +101,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
           );
     } else {
       context.read<ProductBloc>().add(ProductEvent.delete(product));
-      Navigator.of(context).pop();
     }
   }
 }

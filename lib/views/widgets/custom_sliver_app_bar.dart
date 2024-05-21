@@ -51,7 +51,7 @@ class CustomSliverAppBar extends StatelessWidget {
             ? Text(
                 title!,
                 style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 18,
                 ),
               )
             : widget,
