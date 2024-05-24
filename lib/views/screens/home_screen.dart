@@ -11,10 +11,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final pageController = PageController();
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -28,7 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: const FaIcon(FontAwesomeIcons.plus),
       ),
       body: PageView(
-        controller: pageController,
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            this.index = index;
+          });
+        },
         children: const [
           CategoriesScreen(),
           PurchasesScreen(),
@@ -50,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             this.index = index;
           });
-          pageController.animateToPage(
+          _pageController.animateToPage(
             index,
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,

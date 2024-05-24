@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stock_app/blocs/blocs.dart';
 import 'package:stock_app/data/data.dart';
 import 'package:stock_app/views/views.dart';
@@ -36,8 +37,25 @@ class CategoryScreen extends StatelessWidget {
                           .toList();
 
                       if (categoryProducts.isEmpty) {
-                        return const Center(
-                          child: Text('No hay productos en esta categoría'),
+                        return Center(
+                          child: Opacity(
+                            opacity: 0.3,
+                            child: Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SvgPicture.asset(
+                                    AppImages.purchaseIcon,
+                                    width: 100,
+                                  ),
+                                  const SizedBox(height: 16),
+                                  const Text(
+                                    'No hay productos en la categoría',
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         );
                       }
 

@@ -23,7 +23,12 @@ class PurchaseList extends StatelessWidget {
                   ),
                 )
               : SliverPadding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.only(
+                    top: 8,
+                    bottom: 80,
+                    left: 8,
+                    right: 8,
+                  ),
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {

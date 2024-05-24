@@ -29,9 +29,9 @@ class CustomSliverAppBar extends StatelessWidget {
       ],
       leading: arrowBack
           ? IconButton(
-              icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+              icon: const Icon(FontAwesomeIcons.arrowLeft, size: 20),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               },
             )
           : null,
@@ -41,7 +41,7 @@ class CustomSliverAppBar extends StatelessWidget {
         titlePadding: arrowBack
             ? const EdgeInsets.only(
                 left: 52,
-                bottom: 11,
+                bottom: 14,
               )
             : const EdgeInsets.only(
                 left: 16,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stock_app/blocs/blocs.dart';
 import 'package:stock_app/data/data.dart';
@@ -44,9 +46,22 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
             arrowBack: true,
           ),
           if (products.isEmpty)
-            const SliverFillRemaining(
-              child: Center(
-                child: Text('No hay productos en la compra'),
+            SliverFillRemaining(
+              child: Opacity(
+                opacity: 0.3,
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        AppImages.purchaseIcon,
+                        width: 100,
+                      ),
+                      const SizedBox(height: 16),
+                      const Text('No hay productos en la compra'),
+                    ],
+                  ),
+                ),
               ),
             )
           else
@@ -73,8 +88,27 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
                           }
                         });
                       },
-                      child: ProductCard.purchase(
-                        product: product,
+                      child: Slidable(
+                        endActionPane: ActionPane(
+                          extentRatio: 0.25,
+                          motion: const ScrollMotion(),
+                          children: [
+                            SlidableAction(
+                              borderRadius: BorderRadius.circular(8),
+                              onPressed: (_) {
+                                setState(() {
+                                  products.removeAt(index);
+                                });
+                              },
+                              icon: FontAwesomeIcons.trash,
+                              backgroundColor: Colors.red,
+                              foregroundColor: Colors.white,
+                            ),
+                          ],
+                        ),
+                        child: ProductCard.purchase(
+                          product: product,
+                        ),
                       ),
                     );
                   },

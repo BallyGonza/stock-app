@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stock_app/blocs/blocs.dart';
 import 'package:stock_app/data/data.dart';
 import 'package:stock_app/views/views.dart';
@@ -100,7 +101,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
                       decoration: const InputDecoration(labelText: 'Nombre'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter a product name';
+                          return 'Ingrese el nombre del producto';
                         }
                         return null;
                       },
@@ -120,10 +121,10 @@ class _NewProductScreenState extends State<NewProductScreen> {
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter a product price';
+                                return 'ingrese un precio';
                               }
                               if (double.tryParse(value) == null) {
-                                return 'Please enter a valid number';
+                                return 'ingrese un número válido';
                               }
                               return null;
                             },
@@ -141,10 +142,10 @@ class _NewProductScreenState extends State<NewProductScreen> {
                             keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter a product quantity';
+                                return 'ingrese una cantidad';
                               }
                               if (int.tryParse(value) == null) {
-                                return 'Please enter a valid number';
+                                return 'ingrese un número válido';
                               }
                               return null;
                             },
@@ -158,22 +159,16 @@ class _NewProductScreenState extends State<NewProductScreen> {
                       textCapitalization: TextCapitalization.words,
                       controller: _brandController,
                       decoration: const InputDecoration(labelText: 'Marca'),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter a product brand';
-                        }
-                        return null;
-                      },
                     ),
                     const SizedBox(height: 12),
                     ListTile(
-                      title: const Text('Expiration Date'),
+                      title: const Text('Fecha de Vencimiento'),
                       subtitle: Text(
                         _expirationDateController.text.isEmpty
-                            ? 'Select Expiration Date'
+                            ? 'Seleccionar fecha'
                             : _expirationDateController.text,
                       ),
-                      trailing: const Icon(Icons.calendar_today),
+                      trailing: const FaIcon(FontAwesomeIcons.calendarDay),
                       onTap: () => showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),
@@ -217,7 +212,7 @@ class _NewProductScreenState extends State<NewProductScreen> {
                                 value: _category == null
                                     ? null
                                     : _category as CategoryModel,
-                                hint: const Text('Category'),
+                                hint: const Text('Seleccione una categoria'),
                               ),
                             );
                           },

@@ -16,6 +16,16 @@ class CategoryRepository {
         return defaultCategories;
       }
       return [];
+    } else {
+      final defaultCategories = _getDefault();
+      final storedCategories = categoryBox.values.toList();
+      if (defaultCategories.length != storedCategories.length) {
+        await categoryBox.clear();
+        await categoryBox.putAll({
+          for (final category in defaultCategories) category.id: category,
+        });
+        return defaultCategories;
+      }
     }
     return categoryBox.values.toList();
   }
@@ -37,8 +47,8 @@ class CategoryRepository {
       ),
       CategoryModel(
         id: '2',
-        name: 'Carnes',
-        icon: AppImages.meatCategory,
+        name: 'Proteinas',
+        icon: AppImages.proteinCategory,
       ),
       CategoryModel(
         id: '3',
@@ -57,8 +67,8 @@ class CategoryRepository {
       ),
       CategoryModel(
         id: '6',
-        name: 'Harinas',
-        icon: AppImages.flourCategory,
+        name: 'Panaderia',
+        icon: AppImages.bakeryCategory,
       ),
       CategoryModel(
         id: '7',
@@ -77,8 +87,8 @@ class CategoryRepository {
       ),
       CategoryModel(
         id: '10',
-        name: 'Pastas',
-        icon: AppImages.pastaCategory,
+        name: 'No Perecederos',
+        icon: AppImages.nonperishableCategory,
       ),
       CategoryModel(
         id: '11',
@@ -89,6 +99,11 @@ class CategoryRepository {
         id: '12',
         name: 'Cocina',
         icon: AppImages.kitchenCategory,
+      ),
+      CategoryModel(
+        id: '13',
+        name: 'Congelados',
+        icon: AppImages.frozenCategory,
       ),
     ];
   }
